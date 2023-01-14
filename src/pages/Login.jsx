@@ -17,7 +17,7 @@ function Login({ setIsAuth }) {
 
   return (
     <div className="loginPage">
-      <p>Sign in</p>
+      <p>Log In</p>
       <GoogleButton onClick={googleSignIn} />
     </div>
   );
