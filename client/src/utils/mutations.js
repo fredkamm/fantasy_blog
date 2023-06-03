@@ -29,6 +29,7 @@ export const ADD_THOUGHT = gql`
     addThought(thoughtText: $thoughtText) {
       _id
       thoughtText
+      thoughtTitle
       thoughtAuthor
       createdAt
       comments {
@@ -44,6 +45,7 @@ export const ADD_COMMENT = gql`
     addComment(thoughtId: $thoughtId, commentText: $commentText) {
       _id
       thoughtText
+      thoughtTitle
       thoughtAuthor
       createdAt
       comments {
