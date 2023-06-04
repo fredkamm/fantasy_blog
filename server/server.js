@@ -12,6 +12,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
+  cacheControl: true, // Enable cache control directives
 });
 
 app.use(express.urlencoded({ extended: false }));
