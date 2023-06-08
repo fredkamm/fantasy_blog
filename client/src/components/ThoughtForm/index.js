@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
 
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_THOUGHT } from "../../utils/mutations";
+import { QUERY_THOUGHTS, QUERY_ME } from "../../utils/queries";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
 const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState('');
+  const [thoughtText, setThoughtText] = useState("");
+  const [thoughtTitle, setThoughtTitle] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -40,52 +41,83 @@ const ThoughtForm = () => {
     try {
       const { data } = await addThought({
         variables: {
+          thoughtTitle,
           thoughtText,
           thoughtAuthor: Auth.getProfile().data.username,
         },
       });
+      
+      console.log(data);
 
-      setThoughtText('');
+      setThoughtTitle("");
+      setThoughtText("");
     } catch (err) {
       console.error(err);
+      console.log(err.message); // Log the error message
+      console.log(err.graphQLErrors); // Log any GraphQL-specific errors
     }
   };
 
-  const handleChange = (event) => {
+  const handleTextChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
+    if (name === "thoughtText" && value.length <= 280) {
       setThoughtText(value);
       setCharacterCount(value.length);
     }
   };
 
+  const handleTitleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "thoughtTitle" && value.length <= 280) {
+      setThoughtTitle(value);
+      setCharacterCount(value.length);
+    }
+  };
+
   return (
-    <div className='bg-light'>
-      <h3>Lets hear your terrible take...</h3>
+    <div className="bg-light">
+      <h3>Lets hear what your thinking...</h3>
 
       {Auth.loggedIn() ? (
         <>
-          <p
-            className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
-            }`}
-          >
-            Character Count: {characterCount}/280
-          </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
+              <p
+                className={`m-0 ${
+                  characterCount === 280 || error ? "text-danger" : ""
+                }`}
+              >
+                {" "}
+                Title Count: {characterCount}/20
+              </p>
+              <input
+                name="thoughtTitle"
+                placeholder="Title"
+                value={thoughtTitle}
+                className="form-input w-100"
+                style={{ lineHeight: "1.5", resize: "vertical" }}
+                onChange={handleTitleChange}
+              ></input>
               <textarea
                 name="thoughtText"
-                placeholder="Here's a new take..."
+                placeholder="What are you thinking..."
                 value={thoughtText}
                 className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
+                style={{ lineHeight: "1.5", resize: "vertical" }}
+                onChange={handleTextChange}
               ></textarea>
+              <p
+                className={`m-0 ${
+                  characterCount === 280 || error ? "text-danger" : ""
+                }`}
+              >
+                Text Count: {characterCount}/280
+              </p>
             </div>
 
             <div className="col-12 col-lg-3">
@@ -102,7 +134,7 @@ const ThoughtForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to participate in these discussions. Please{' '}
+          You need to be logged in to participate in these discussions. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
