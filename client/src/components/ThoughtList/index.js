@@ -13,7 +13,7 @@ const ThoughtList = ({
 
   return (
     <div>
-      {showTitle && <h3>{title}</h3>}
+      {showTitle && <h3 className="text-center mb-3 text-light">{title}</h3>}
       {thoughts &&
         thoughts.map((thought) => (
           <div key={thought._id} className="card mb-3">
@@ -41,7 +41,7 @@ const ThoughtList = ({
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/thoughts/${thought._id}`}
+              to={`/takes/${thought._id}`}
             >
               Got something to say? Click here.
             </Link>

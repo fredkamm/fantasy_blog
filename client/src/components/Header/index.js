@@ -9,7 +9,7 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className="bg-primary text-light mb-4 py-3 flex-row align-center" style={{borderBottom: "1px solid #ffff"}}>
       <div className="container flex-row justify-space-around-lg justify-center-md align-center">
         <div>
           <Link className="text-light" to="/">

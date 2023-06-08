@@ -14,18 +14,18 @@ const Home = () => {
     <main>
       <div className="flex-row justify-center">
         <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
+          className=" bg-light col-12 col-md-10 mb-5 p-3"
+          style={{ boxShadow: '0px 2px 2px 2px #ffff', borderRadius: '10px' }}
         >
           <ThoughtForm />
         </div>
-        <div className="col-12 col-md-8 mb-3">
+        <div className="col-12 col-md-8 mt-3 mb-3" style={{ boxShadow: '0px 2px 2px 2px #ffff', borderRadius: '10px' }}>
           {loading ? (
             <div>Loading...</div>
           ) : (
             <ThoughtList
               thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
+              title="Recent Takes..."
             />
           )}
         </div>

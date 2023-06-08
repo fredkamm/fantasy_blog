@@ -61,7 +61,7 @@ const ThoughtForm = () => {
   };
 
   return (
-    <div>
+    <div className='bg-light'>
       <h3>Lets hear your terrible take...</h3>
 
       {Auth.loggedIn() ? (
@@ -89,7 +89,7 @@ const ThoughtForm = () => {
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="btn btn-light btn-block py-3" type="submit">
                 Submit Take
               </button>
             </div>

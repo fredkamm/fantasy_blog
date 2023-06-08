@@ -187,9 +187,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -197,9 +197,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -208,9 +208,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -260,8 +260,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -271,8 +271,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -280,7 +280,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -290,7 +290,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -351,14 +351,15 @@ END NORMALIZE CSS
 html,
 body {
   min-height: 100%;
+  background-color: #18181b;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
   font-size: 16px;
   color: #1a1a1a;
 }
@@ -369,7 +370,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   margin: 0 0 0.5rem;
   line-height: 1.25;
 }
@@ -920,7 +921,11 @@ a:hover {
 
 /* BACKGROUND UTILS */
 .bg-primary {
-  background-color: #2d3e50 !important;
+  background-color: #18181b !important;
+}
+
+.bg-secondary {
+  background-color: #ffff;
 }
 
 .bg-info {
@@ -932,7 +937,7 @@ a:hover {
 }
 
 .bg-light {
-  background-color: #d9e9e8 !important;
+  background-color: #45d3b5 !important;
 }
 
 .bg-dark {
@@ -1018,6 +1023,7 @@ a:hover {
 
 .btn.btn-primary:hover {
   background-color: #57779a;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .btn.btn-danger {
@@ -1027,6 +1033,7 @@ a:hover {
 
 .btn.btn-danger:hover {
   background-color: #ee8294;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .btn.btn-info {
@@ -1036,6 +1043,7 @@ a:hover {
 
 .btn.btn-info:hover {
   background-color: #31e1bd;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .btn.btn-light {
@@ -1044,7 +1052,8 @@ a:hover {
 }
 
 .btn.btn-light:hover {
-  background-color: #84b8b4;
+  background-color: #1bbc9b;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .btn.btn-dark {
@@ -1054,6 +1063,7 @@ a:hover {
 
 .btn.btn-dark:hover {
   background-color: #5f5f5f;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .btn.btn-white {
@@ -1063,6 +1073,7 @@ a:hover {
 
 .btn.btn-white:hover {
   background-color: #cccccc;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .btn.btn-black {
@@ -1072,6 +1083,7 @@ a:hover {
 
 .btn.btn-black:hover {
   background-color: #666666;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .btn.btn-link {
@@ -1081,6 +1093,7 @@ a:hover {
 
 .btn.btn-link:hover {
   background-color: #31a9e1;
+  box-shadow: 0px 1px 1px 1px #ffff;
 }
 
 .card {
@@ -1157,13 +1170,13 @@ form .form-input.form-input-squared {
   border-radius: 0;
 }
 
-form [type='checkbox'],
-form [type='radio'] {
+form [type="checkbox"],
+form [type="radio"] {
   display: inline-block;
 }
 
-label form [type='checkbox'],
-label form [type='radio'] {
+label form [type="checkbox"],
+label form [type="radio"] {
   display: inline-block;
 }
 
@@ -1259,7 +1272,7 @@ label form [type='radio'] {
   margin-right: -15px;
 }
 
-[class*='col-'] {
+[class*="col-"] {
   position: relative;
   width: 100%;
   padding-right: 15px;

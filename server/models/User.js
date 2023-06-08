@@ -7,6 +7,7 @@ const userSchema = new Schema({
     required: true,
     unique: true,
     trim: true,
+    match: /^[^\s]+$/,
   },
   email: {
     type: String,
