@@ -12,6 +12,8 @@ const thoughtSchema = new Schema({
   thoughtTitle: {
     type: String,
     required: true,
+    minlength: 3,
+    maxlength: 20,
     trim: true,
   },
   thoughtAuthor: {
