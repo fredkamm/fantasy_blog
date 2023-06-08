@@ -11,7 +11,8 @@ const ThoughtForm = () => {
   const [thoughtText, setThoughtText] = useState("");
   const [thoughtTitle, setThoughtTitle] = useState("");
 
-  const [characterCount, setCharacterCount] = useState(0);
+  const [characterTextCount, setCharacterTextCount] = useState(0);
+  const [characterTitleCount, setCharacterTitleCount] = useState(0);
 
   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
     update(cache, { data: { addThought } }) {
@@ -61,18 +62,18 @@ const ThoughtForm = () => {
   const handleTextChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "thoughtText" && value.length <= 280) {
+    if (name === "thoughtText" && value.length <= 1000) {
       setThoughtText(value);
-      setCharacterCount(value.length);
+      setCharacterTextCount(value.length);
     }
   };
 
   const handleTitleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "thoughtTitle" && value.length <= 280) {
+    if (name === "thoughtTitle" && value.length <= 20) {
       setThoughtTitle(value);
-      setCharacterCount(value.length);
+      setCharacterTitleCount(value.length);
     }
   };
 
@@ -84,16 +85,17 @@ const ThoughtForm = () => {
         <>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
+            
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
               <p
                 className={`m-0 ${
-                  characterCount === 280 || error ? "text-danger" : ""
+                  characterTitleCount === 20 || error ? "text-danger" : ""
                 }`}
               >
                 {" "}
-                Title Count: {characterCount}/20
+                Title Count: {characterTitleCount}/20
               </p>
               <input
                 name="thoughtTitle"
@@ -113,10 +115,10 @@ const ThoughtForm = () => {
               ></textarea>
               <p
                 className={`m-0 ${
-                  characterCount === 280 || error ? "text-danger" : ""
+                  characterTextCount === 1000 || error ? "text-danger" : ""
                 }`}
               >
-                Text Count: {characterCount}/280
+                Text Count: {characterTextCount}/1000
               </p>
             </div>
 
