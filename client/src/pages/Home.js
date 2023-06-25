@@ -14,10 +14,7 @@ const Home = () => {
     <main>
       <div className="homePage">
         <ThoughtForm />
-        <div
-          className="col-12 col-md-8 mt-3 mb-3"
-          style={{ boxShadow: "0px 2px 2px 2px #ffff", borderRadius: "10px" }}
-        >
+        <div className="thoughts">
           {loading ? (
             <div>Loading...</div>
           ) : (

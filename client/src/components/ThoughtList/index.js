@@ -1,62 +1,48 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/esm/Col";
 import { Link } from "react-router-dom";
 
-const ThoughtList = ({
-  thoughts,
-  title,
-  showTitle = true,
-  showUsername = true,
-}) => {
+const ThoughtList = ({ thoughts, title }) => {
   if (!thoughts.length) {
     return <h3>No Takes Yet</h3>;
   }
 
   return (
-    <div>
-      {showTitle && (
-        <h3 className="text-center mt-1 mb-1 text-light">{title}</h3>
-      )}
-      {thoughts &&
-        thoughts.map((thought) => (
-          <div
-            key={thought._id}
-            className="card"
-            style={{ boxShadow: "0px 2px 2px 2px #ffff", borderRadius: "10px" }}
-          >
-            <h4
-              className="card-header bg-light p-2 m-0"
-              style={{ borderRadius: "10px 10px 0px 0px" }}
-            >
-              {showUsername ? (
-                <Link
-                  className="text-dark"
-                  to={`/profiles/${thought.thoughtAuthor}`}
-                >
-                  {thought.thoughtTitle} <br />
-                  <span style={{ fontSize: "1rem" }}>
-                    @{thought.thoughtAuthor} <br /> {thought.createdAt}
-                  </span>
-                </Link>
-              ) : (
-                <>
-                  <span style={{ fontSize: "1rem" }}>{thought.createdAt}</span>
-                </>
-              )}
-            </h4>
-            {/* TODO: Add a border to the card */}
-            <div className="card-body bg-primary text-light p-2" style={{ borderTop: "1px solid #ffff" }}> 
-              <p>{thought.thoughtText}</p>
-            </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              style={{ borderRadius: "0px 0px 10px 10px" }}
-              to={`/takes/${thought._id}`}
-            >
-              Comments
-            </Link>
-          </div>
-        ))}
-    </div>
+    <Container>
+      <Row>
+        <h3 className="text-center text-light">{title}</h3>
+      </Row>
+      <Row>
+        {thoughts &&
+          thoughts.map((thought) => (
+            <Col className="thoughtList-single" xs={4} md={4}>
+              <Card key={thought._id} className="thoughtList">
+                <Card.Header className="thought-card-header">
+                  <Link to={`/profiles/${thought.thoughtAuthor}`}>
+                    @{thought.thoughtAuthor}
+                  </Link>
+                </Card.Header>
+                <Card.Body className="thought-card-body">
+                  <Card.Title>{thought.thoughtTitle}</Card.Title>
+                  <Card.Text>{thought.thoughtText}</Card.Text>
+                  <Button
+                    className="thought-card-button"
+                    href={`/takes/${thought._id}`}
+                    variant="primary"
+                  >
+                    Comments
+                  </Button>
+                </Card.Body>
+                <Card.Footer>{thought.createdAt}</Card.Footer>
+              </Card>
+            </Col>
+          ))}
+      </Row>
+    </Container>
   );
 };
 

@@ -140,7 +140,6 @@ const ThoughtForm = () => {
                 </p>
               </div>
             </div>
-
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
@@ -149,27 +148,14 @@ const ThoughtForm = () => {
           </Form>
         </>
       ) : (
-        <p>
-          You need to be logged in to participate in these discussions. Please{" "}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
+        <div className="thoughtForm-login">
+          <p>You need to be logged in to participate in these discussions. </p>
+          <p>
+            <Link to="/login">Login</Link> or <Link to="/signup">Signup.</Link>
+          </p>
+        </div>
       )}
     </Card>
-
-    //   <FloatingLabel
-    //   controlId="floatingTextarea"
-    //   label="Comments"
-    //   className="mb-3"
-    //   >
-    //   <Form.Control as="textarea" placeholder="Leave a comment here" />
-    // </FloatingLabel>
-    // <FloatingLabel controlId="floatingTextarea2" label="Comments">
-    //   <Form.Control
-    //     as="textarea"
-    //     placeholder="Leave a comment here"
-    //     style={{ height: '100px' }}
-    //     />
-    // </FloatingLabel>
   );
 };
 

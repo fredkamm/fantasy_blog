@@ -1,5 +1,5 @@
 .main-container {
-  background-color: #1b89bc;
+  background-color: #1f2223;
 }
 
 .homePage {
@@ -18,14 +18,15 @@
 }
 
 .thoughtForm h3 {
-  padding: .5rem 0 0 1rem;
+  padding: 0.5rem 0 0 1rem;
 }
 
 .thoughtForm-body {
   margin: 1rem;
 }
 
-.title-count, .post-count {
+.title-count,
+.post-count {
   display: flex;
   justify-content: end;
   font-size: 12px;
@@ -43,6 +44,29 @@
   margin-bottom: 1rem;
 }
 
+.thoughtForm-login {
+  display: block;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.thoughts h3 {
+  display: flex;
+  color: #f7f1f1;
+  margin: 1rem 0 1rem 0rem;
+}
+
+.thoughtList {
+  box-shadow: 0px 2px 2px 2px #fff;
+  border-radius: 10px;
+  min-height: 25rem;
+  max-height: 45rem;
+}
+
+.thoughtList-single {
+  margin: 1rem 0 1rem 0rem;
+}
+
 h1,
 h2,
 h3,
@@ -50,61 +74,6 @@ h4,
 h5,
 h6 {
   font-family: "JetBrains Mono", monospace;
-  margin: 0 0 0.5rem;
-  line-height: 1.25;
-}
-
-h1 {
-  font-size: 2.25rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.75rem;
-}
-
-h4 {
-  font-size: 1.5rem;
-}
-
-h5 {
-  font-size: 1.25rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
-
-p {
-  font-size: 1.1rem;
-  margin: 0 0 1rem;
-  line-height: 1.5;
-}
-
-ul,
-ol,
-dl {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-label {
-  display: inline-block;
-}
-
-input,
-select,
-textarea,
-button {
-  margin: 0;
-}
-
-a {
-  color: #1b89bc;
-  text-decoration: none;
 }
 
 a:hover {
