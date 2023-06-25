@@ -21,23 +21,22 @@ const ThoughtList = ({ thoughts, title }) => {
           thoughts.map((thought) => (
             <Col className="thoughtList-single" xs={4} md={4}>
               <Card key={thought._id} className="thoughtList">
-                <Card.Header className="thought-card-header">
-                  <Link to={`/profiles/${thought.thoughtAuthor}`}>
-                    @{thought.thoughtAuthor}
-                  </Link>
-                </Card.Header>
+                <Link
+                  to={`/profiles/${thought.thoughtAuthor}`}
+                  className="thought-card-link"
+                >
+                  <Card.Header>@{thought.thoughtAuthor}</Card.Header>
+                </Link>
                 <Card.Body className="thought-card-body">
                   <Card.Title>{thought.thoughtTitle}</Card.Title>
                   <Card.Text>{thought.thoughtText}</Card.Text>
-                  <Button
-                    className="thought-card-button"
-                    href={`/takes/${thought._id}`}
-                    variant="primary"
-                  >
+                </Card.Body>
+                <Card.Footer className="thought-card-footer">
+                  <Button href={`/takes/${thought._id}`} variant="primary">
                     Comments
                   </Button>
-                </Card.Body>
-                <Card.Footer>{thought.createdAt}</Card.Footer>
+                  {thought.createdAt}
+                </Card.Footer>
               </Card>
             </Col>
           ))}

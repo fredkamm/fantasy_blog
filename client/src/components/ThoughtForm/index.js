@@ -57,6 +57,8 @@ const ThoughtForm = () => {
 
       setThoughtTitle("");
       setThoughtText("");
+      setCharacterTextCount(0);
+      setCharacterTitleCount(0);
     } catch (err) {
       console.error(err);
       console.log(err.message); // Log the error message
@@ -95,7 +97,7 @@ const ThoughtForm = () => {
                 }`}
               >
                 {" "}
-                Title Count: {characterTitleCount}/20
+                {characterTitleCount}/20
               </p>
               <FloatingLabel
                 controlId="floatingTextarea"

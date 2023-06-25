@@ -9,6 +9,7 @@
   align-items: center;
 }
 
+/* START OF THE THOUGHT FORM FOR THE HOME PAGE */
 .thoughtForm {
   display: flex;
   box-shadow: 0px 1px 1px 1px #f7f1f1;
@@ -22,7 +23,7 @@
 }
 
 .thoughtForm-body {
-  margin: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
 }
 
 .title-count,
@@ -49,7 +50,9 @@
   text-align: center;
   font-size: 1.1rem;
 }
+/* END OF THE THOUGHT FORM FOR THE HOME PAGE */
 
+/* START OF THE THOUGHT LIST FOR THE HOME PAGE */
 .thoughts h3 {
   display: flex;
   color: #f7f1f1;
@@ -63,8 +66,51 @@
   max-height: 45rem;
 }
 
+.thought-card-header {
+  color: #de0000;
+  font-size: 20px;
+  text-align: center;
+}
+
 .thoughtList-single {
   margin: 1rem 0 1rem 0rem;
+}
+
+.thought-card-link {
+  color: inherit;
+  font-size: 21px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.thought-card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+/* START OF THE THOUGHT LIST FOR THE HOME PAGE */
+
+.thoughtForm-profile {
+  display: flex;
+  box-shadow: 0px 1px 1px 1px #f7f1f1;
+  border-radius: 10px;
+  width: 45rem;
+  min-height: auto;
+  margin: 2rem 0 2rem 0;
+}
+
+.thoughts-profile {
+  margin: 2rem 0 2rem 0;
+}
+
+.thoughts-profile h3 {
+  display: flex;
+  color: #f7f1f1;
+  margin: 1rem 0 1rem 0rem;
+}
+
+.no-user-profile {
+  color: #fff;
+  margin: 15rem 0 15rem 0;
 }
 
 h1,
@@ -77,6 +123,6 @@ h6 {
 }
 
 a:hover {
-  color: #065b83;
+  color: #446ee3;
   text-decoration: underline;
 }
