@@ -43,8 +43,8 @@ const Signup = () => {
     let hasErrors = false;
     const updatedErrors = { email: null, password: null };
 
-    if (!formState.name) {
-      updatedErrors.name = "Username is required.";
+    if (!formState.username) {
+      updatedErrors.username = "Username is required.";
       hasErrors = true;
     }
 
@@ -73,6 +73,13 @@ const Signup = () => {
     } catch (e) {
       console.error(e);
     }
+
+    setFormState({
+      username: "",
+      email: "",
+      password: "",
+    });
+
   };
 
   return (
@@ -178,7 +185,7 @@ const Signup = () => {
             >
               <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
               <p>
-                {errors.message}
+                {error.message}
                 {show}
               </p>
             </Alert>

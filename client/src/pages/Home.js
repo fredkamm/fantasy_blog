@@ -1,10 +1,10 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { useQuery } from "@apollo/client";
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+import ThoughtList from "../components/ThoughtList";
+import ThoughtForm from "../components/ThoughtForm";
 
-import { QUERY_THOUGHTS } from '../utils/queries';
+import { QUERY_THOUGHTS } from "../utils/queries";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_THOUGHTS);
@@ -12,21 +12,16 @@ const Home = () => {
 
   return (
     <main>
-      <div className="flex-row justify-center">
+      <div className="homePage">
+        <ThoughtForm />
         <div
-          className=" bg-light col-12 col-md-10 mb-5 p-3"
-          style={{ boxShadow: '0px 2px 2px 2px #ffff', borderRadius: '10px' }}
+          className="col-12 col-md-8 mt-3 mb-3"
+          style={{ boxShadow: "0px 2px 2px 2px #ffff", borderRadius: "10px" }}
         >
-          <ThoughtForm />
-        </div>
-        <div className="col-12 col-md-8 mt-3 mb-3" style={{ boxShadow: '0px 2px 2px 2px #ffff', borderRadius: '10px' }}>
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Recent Takes..."
-            />
+            <ThoughtList thoughts={thoughts} title="Recent Takes..." />
           )}
         </div>
       </div>

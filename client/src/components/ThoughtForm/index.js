@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
@@ -78,60 +83,70 @@ const ThoughtForm = () => {
   };
 
   return (
-    <div className="bg-light">
-      <h3>Lets hear what your thinking...</h3>
-
+    <Card className="thoughtForm">
+      <h3>Create a post:</h3>
       {Auth.loggedIn() ? (
         <>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="col-12 col-lg-9">
+          <Form className="thoughtForm-form" onSubmit={handleFormSubmit}>
+            <div className="thoughtForm-body">
               <p
-                className={`m-0 ${
+                className={`title-count ${
                   characterTitleCount === 20 || error ? "text-danger" : ""
                 }`}
               >
                 {" "}
                 Title Count: {characterTitleCount}/20
               </p>
-              <input
-                name="thoughtTitle"
-                placeholder="Title"
-                value={thoughtTitle}
-                className="form-input w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleTitleChange}
-              ></input>
-              <textarea
-                name="thoughtText"
-                placeholder="What are you thinking..."
-                value={thoughtText}
-                className="form-input w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleTextChange}
-              ></textarea>
-              <p
-                className={`m-0 ${
-                  characterTextCount === 1000 || error ? "text-danger" : ""
-                }`}
+              <FloatingLabel
+                controlId="floatingTextarea"
+                label="Title"
+                className="mb-3"
               >
-                Text Count: {characterTextCount}/1000
-              </p>
+                <Form.Control
+                  as="textarea"
+                  name="thoughtTitle"
+                  placeholder="Tile"
+                  value={thoughtTitle}
+                  className="form-input w-100"
+                  style={{ lineHeight: "1.5", resize: "vertical" }}
+                  onChange={handleTitleChange}
+                />
+              </FloatingLabel>
+              <FloatingLabel
+                controlId="floatingTextarea"
+                label="Post"
+                className="mb-3"
+              >
+                <Form.Control
+                  as="textarea"
+                  name="thoughtText"
+                  placeholder="Post"
+                  value={thoughtText}
+                  className="form-input w-100"
+                  style={{ lineHeight: "1.5", resize: "vertical" }}
+                  onChange={handleTextChange}
+                />
+              </FloatingLabel>
+              <div className="thoughtForm-footer">
+                <Button variant="primary" type="submit">
+                  Submit Take
+                </Button>
+                <p
+                  className={`post-count ${
+                    characterTextCount === 1000 || error ? "text-danger" : ""
+                  }`}
+                >
+                  {characterTextCount}/1000
+                </p>
+              </div>
             </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-light btn-block py-3" type="submit">
-                Submit Take
-              </button>
-            </div>
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
               </div>
             )}
-          </form>
+          </Form>
         </>
       ) : (
         <p>
@@ -139,7 +154,22 @@ const ThoughtForm = () => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
-    </div>
+    </Card>
+
+    //   <FloatingLabel
+    //   controlId="floatingTextarea"
+    //   label="Comments"
+    //   className="mb-3"
+    //   >
+    //   <Form.Control as="textarea" placeholder="Leave a comment here" />
+    // </FloatingLabel>
+    // <FloatingLabel controlId="floatingTextarea2" label="Comments">
+    //   <Form.Control
+    //     as="textarea"
+    //     placeholder="Leave a comment here"
+    //     style={{ height: '100px' }}
+    //     />
+    // </FloatingLabel>
   );
 };
 
