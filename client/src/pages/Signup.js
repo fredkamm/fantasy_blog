@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
@@ -39,19 +42,23 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
+    <Card className="flex-row justify-center mt-4">
       <div className="col-12 col-lg-10">
-        <div className="card bg-light">
-          <h4 className="card-header text-light p-2 text-center">Sign Up</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{" "}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
+        <h4 className="card-header text-light p-2 text-center">Login</h4>
+        <div className="card-body">
+          {data ? (
+            <p>
+              Success! You may now head{" "}
+              <Link to="/">back to the homepage.</Link>
+            </p>
+          ) : (
+            <Form onSubmit={handleFormSubmit}>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Username</Form.Label>
+                <Form.Control
                   className="form-input"
                   placeholder="Your username"
                   name="username"
@@ -59,44 +66,56 @@ const Signup = () => {
                   value={formState.name}
                   onChange={handleChange}
                 />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
+              </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
                   type="email"
+                  placeholder="name@example.com"
+                  name="email"
+                  className="form-input"
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
+              </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Password</Form.Label>
+                <Form.Control
                   type="password"
+                  placeholder="******"
+                  className="form-input"
+                  name="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <p className="flex-row justify-center mb-4">
-                  Already have an account? <Link to="/login">Login</Link>
-                </p>
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: "pointer" }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+              </Form.Group>
+              <p className="flex-row justify-center mb-4">
+                Don't have an account? <Link to="/signup">Sign up</Link>.
+              </p>
+              <Button
+                variant="primary"
+                style={{ cursor: "pointer" }}
+                type="submit"
+              >
+                Submit
+              </Button>
+            </Form>
+          )}
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-          </div>
+          {error && (
+            <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+          )}
         </div>
       </div>
-    </main>
+    </Card>
   );
 };
 

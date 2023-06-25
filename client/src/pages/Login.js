@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -41,9 +44,8 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
+    <Card className="flex-row justify-center mt-4">
       <div className="col-12 col-lg-10">
-        <div className="card bg-light">
           <h4 className="card-header text-light p-2 text-center">Login</h4>
           <div className="card-body">
             {data ? (
@@ -52,34 +54,48 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
+              <Form onSubmit={handleFormSubmit}>
+
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="name@example.com"
+                    name="email"
+                    className="form-input"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="******"
+                    className="form-input"
+                    name="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
                 <p className="flex-row justify-center mb-4">
                   Don't have an account? <Link to="/signup">Sign up</Link>.
                 </p>
-                <button
-                  className="btn btn-block btn-primary"
+                <Button
+                  variant="primary"
                   style={{ cursor: "pointer" }}
                   type="submit"
                 >
                   Submit
-                </button>
-              </form>
+                </Button>
+              </Form>
             )}
 
             {error && (
@@ -88,9 +104,8 @@ const Login = (props) => {
               </div>
             )}
           </div>
-        </div>
       </div>
-    </main>
+    </Card>
   );
 };
 

@@ -47,7 +47,7 @@ const ThoughtForm = () => {
           thoughtAuthor: Auth.getProfile().data.username,
         },
       });
-      
+
       console.log(data);
 
       setThoughtTitle("");
@@ -85,7 +85,6 @@ const ThoughtForm = () => {
         <>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
-            
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
