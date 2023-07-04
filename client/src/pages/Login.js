@@ -107,7 +107,11 @@ const Login = (props) => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <FloatingLabel controlId="floatingPassword" label="Password">
+            <FloatingLabel
+              controlId="floatingPassword"
+              label="Password"
+              className="mb-3"
+            >
               <Form.Control
                 type="password"
                 placeholder="******"

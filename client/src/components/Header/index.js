@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar collapseOnSelect expand="md" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="/">Fantasy Football Blog</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

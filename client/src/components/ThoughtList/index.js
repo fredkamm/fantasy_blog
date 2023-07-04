@@ -19,7 +19,7 @@ const ThoughtList = ({ thoughts, title }) => {
       <Row>
         {thoughts &&
           thoughts.map((thought) => (
-            <Col className="thoughtList-single" xs={4} md={4}>
+            <Col className="thoughtList-single" xs={12} md={12} lg={6} xl={5}>
               <Card key={thought._id} className="thoughtList">
                 <Link
                   to={`/profiles/${thought.thoughtAuthor}`}

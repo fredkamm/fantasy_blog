@@ -1,5 +1,7 @@
 .main-container {
   background-color: #1f2223;
+  font-family: monospace;
+  min-height: 100vh;
 }
 
 .homePage {
@@ -10,6 +12,7 @@
 }
 
 /* START OF THE THOUGHT FORM FOR THE HOME PAGE */
+
 .thoughtForm {
   display: flex;
   box-shadow: 0px 1px 1px 1px #f7f1f1;
@@ -87,7 +90,10 @@
   display: flex;
   justify-content: space-between;
 }
-/* START OF THE THOUGHT LIST FOR THE HOME PAGE */
+
+/* END OF THE THOUGHT LIST FOR THE HOME PAGE */
+
+/* START OF THE THOUGHT FORM FOR THE PROFILE PAGE */
 
 .thoughtForm-profile {
   display: flex;
@@ -112,6 +118,8 @@
   color: #fff;
   margin: 15rem 0 15rem 0;
 }
+
+/* END OF THE THOUGHT FORM FOR THE PROFILE PAGE */
 
 /* START OF THE COMMENT LIST */
 
@@ -139,6 +147,8 @@
   font-size: 16px;
   text-decoration: underline;
 }
+
+/* END OF THE COMMENT LIST */
 
 /* START FOR THE COMMENT PAGE CONTENT */
 
@@ -170,7 +180,10 @@
   text-decoration: underline;
 }
 
+/* END FOR THE COMMENT PAGE CONTENT */
+
 /* START FOR THE LOGIN PAGE */
+
 .login-form-footer {
   display: flex;
   justify-content: flex-start;
@@ -186,6 +199,8 @@
   width: auto;
   height: 2.5rem;
 }
+
+/* END FOR THE LOGIN PAGE */
 
 h1,
 h2,
