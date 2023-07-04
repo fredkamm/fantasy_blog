@@ -70,95 +70,87 @@ const Login = (props) => {
   };
 
   return (
-    <Card className="my-4">
-      <div className="col-12">
-        <h4 className="card-header">Login</h4>
-        <div className="card-body">
-          {data ? (
-            <p>
-              Success! You may now head{" "}
-              <Link to="/">back to the homepage.</Link>
-            </p>
-          ) : (
-            <Form onSubmit={handleFormSubmit}>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <FloatingLabel
-                  controlId="floatingInput"
-                  label="Email address"
-                  className="mb-3"
-                >
-                  <Form.Control
-                    type="email"
-                    placeholder="name@example.com"
-                    name="email"
-                    className="form-input"
-                    value={formState.email}
-                    onChange={handleChange}
-                    isInvalid={errors.email}
-                  />
-                  {errors.email && (
-                    <Form.Control.Feedback type="invalid">
-                      {errors.email}
-                    </Form.Control.Feedback>
-                  )}
-                </FloatingLabel>
-              </Form.Group>
-
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <FloatingLabel controlId="floatingPassword" label="Password">
-                  <Form.Control
-                    type="password"
-                    placeholder="******"
-                    className="form-input"
-                    name="password"
-                    value={formState.password}
-                    onChange={handleChange}
-                    isInvalid={errors.password}
-                  />
-                  {errors.password && (
-                    <Form.Control.Feedback type="invalid">
-                      {errors.password}
-                    </Form.Control.Feedback>
-                  )}
-                </FloatingLabel>
-              </Form.Group>
-              <p className="flex-row justify-center mb-4">
-                Don't have an account?
-                <br />
-                <Link to="/signup">Sign up</Link>.
-              </p>
-              <Button
-                variant="primary"
-                style={{ cursor: "pointer" }}
-                type="submit"
-              >
-                Submit
-              </Button>
-            </Form>
-          )}
-
-          {error && (
-            <Alert
-              className="my-3 p-3"
-              variant="danger"
-              onClose={() => setShow(false)}
-              dismissible
+    <Card
+      className="login-form-card my-4"
+      bg="dark"
+      text="light"
+      border="light"
+    >
+      <h4 className="card-header">Login</h4>
+      {data ? (
+        <p>
+          Success! You may now head <Link to="/">back to the homepage.</Link>
+        </p>
+      ) : (
+        <Form className="login-form" onSubmit={handleFormSubmit}>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <FloatingLabel
+              controlId="floatingInput"
+              label="Email address"
+              className="mb-3"
             >
-              <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-              <p>
-                {error.message}
-                {show}
-              </p>
-            </Alert>
-          )}
-        </div>
-      </div>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                name="email"
+                className="form-input bg-dark text-white"
+                value={formState.email}
+                onChange={handleChange}
+                isInvalid={errors.email}
+              />
+              {errors.email && (
+                <Form.Control.Feedback type="invalid">
+                  {errors.email}
+                </Form.Control.Feedback>
+              )}
+            </FloatingLabel>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <FloatingLabel controlId="floatingPassword" label="Password">
+              <Form.Control
+                type="password"
+                placeholder="******"
+                className="form-input bg-dark text-white"
+                name="password"
+                value={formState.password}
+                onChange={handleChange}
+                isInvalid={errors.password}
+              />
+              {errors.password && (
+                <Form.Control.Feedback type="invalid">
+                  {errors.password}
+                </Form.Control.Feedback>
+              )}
+            </FloatingLabel>
+          </Form.Group>
+          <div className="login-form-footer">
+            <p>
+              Don't have an account?
+              <br />
+              <Link to="/signup">Sign up</Link>.
+            </p>
+            <Button className="login-button" variant="primary" type="submit">
+              Login
+            </Button>
+          </div>
+        </Form>
+      )}
+
+      {error && (
+        <Alert
+          className="my-3 p-3"
+          variant="danger"
+          onClose={() => setShow(false)}
+          dismissible
+        >
+          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          <p>
+            {error.message}
+            {show}
+          </p>
+        </Alert>
+      )}
     </Card>
   );
 };

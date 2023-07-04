@@ -36,7 +36,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="">
+    <>
       <h2 className="text-light p-3 mb-5">
         Viewing {userParam ? `${user.username}'s` : "your"} profile.
       </h2>
@@ -54,7 +54,7 @@ const Profile = () => {
           showUsername={false}
         />
       </div>
-    </div>
+    </>
   );
 };
 
