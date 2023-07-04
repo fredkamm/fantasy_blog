@@ -140,9 +140,9 @@
   text-decoration: underline;
 }
 
-/* START FOR THE COMMENT FORM */
+/* START FOR THE COMMENT PAGE CONTENT */
 
-.comment-form-footer {
+.comment-form-footer, .single-thought-header{
   display: flex;
   justify-content: space-between;
   margin: 0 1rem 1rem 1rem;
@@ -152,6 +152,23 @@
   margin: .5rem 1rem;
 }
 
+.single-thought-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.single-thought-link {
+  color: inherit;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: flex-start;
+}
+
+.single-thought-link:hover {
+  color: inherit;
+  font-size: 16px;
+  text-decoration: underline;
+}
 
 h1,
 h2,

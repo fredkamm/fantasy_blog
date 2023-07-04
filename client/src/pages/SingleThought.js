@@ -1,4 +1,7 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 
 // Import the `useParams()` hook
 import { useParams } from "react-router-dom";
@@ -24,41 +27,33 @@ const SingleThought = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="my-3">
-      <div style={{ borderRadius: "10px", boxShadow: "0px 2px 2px 2px #ffff" }}>
-        <h3
-          className="card-header bg-light text-dark p-2 m-0"
-          style={{ borderRadius: "10px 10px 0px 0px" }}
-        >
-          {thought.thoughtTitle} <br />
-          <span style={{ fontSize: "1rem" }}>
-            @{thought.thoughtAuthor} <br /> {thought.createdAt}
-          </span>
-        </h3>
-        <div
-          className="bg-dark text-light p-4 py-4"
-          style={{ borderRadius: "0px 0px 10px 10px" }}
-        >
-          <blockquote
-            className="p-4"
-            style={{
-              fontSize: "1.5rem",
-              fontStyle: "italic",
-              lineHeight: "1.5",
-            }}
+    <Container className="single-thought-container">
+      <Card
+        className="single-thought-card my-2"
+        bg="dark"
+        text="light"
+        border="light"
+      >
+        <Card.Header className="card-header single-thought-header">
+          <h3>{thought.thoughtTitle}</h3>
+          <Link
+            to={`/profiles/${thought.thoughtAuthor}`}
+            className="single-thought-link"
           >
-            {thought.thoughtText}
-          </blockquote>
-        </div>
-      </div>
+            <p>@{thought.thoughtAuthor}</p>
+          </Link>
+        </Card.Header>
+        <Card.Body className="single-thought-body">
+          <Card.Text>{thought.thoughtText}</Card.Text>
+        </Card.Body>
+        <Card.Footer className="single-thought-footer">
+          {thought.createdAt}
+        </Card.Footer>
+      </Card>
 
-      <div>
-        <CommentForm thoughtId={thought._id} />
-      </div>
-      <div>
-        <CommentList comments={thought.comments} />
-      </div>
-    </div>
+      <CommentForm thoughtId={thought._id} />
+      <CommentList comments={thought.comments} />
+    </Container>
   );
 };
 
