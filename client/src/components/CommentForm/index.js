@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
@@ -42,48 +46,49 @@ const CommentForm = ({ thoughtId }) => {
   };
 
   return (
-    <div>
-      <h4 className="text-light">What do you think about this take?</h4>
-
+    <>
       {Auth.loggedIn() ? (
-        <>
-          <p
-            className={`m-0 text-light ${
-              characterCount === 1000 || error ? "text-danger" : ""
-            }`}
-          >
-            Character Count: {characterCount}/1000
-            {error && <span className="ml-2">{error.message}</span>}
-          </p>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
-            <div className="col-12 col-lg-9">
-              <textarea
+        <Card className="comment-card" bg="dark" text="light" border="light">
+          <h4 className="m-2 text-light">Leave a comment:</h4>
+
+          <Form className="comment-form" onSubmit={handleFormSubmit}>
+            <FloatingLabel
+              controlId="floatingTextarea"
+              label="Comment"
+              className="comment-form-input bg-dark text-white mb-3"
+            >
+              <Form.Control
+                as="textarea"
                 name="commentText"
-                placeholder="Add your comment..."
+                placeholder="Comment"
                 value={commentText}
-                className="form-input w-100"
+                className="form-input bg-dark text-white w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
-              ></textarea>
-            </div>
-
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              />
+            </FloatingLabel>
+            <div className="comment-form-footer">
+              <Button className="" type="submit">
                 Add Comment
-              </button>
+              </Button>
+              <p
+                className={`${
+                  characterCount === 1000 || error ? "text-danger" : ""
+                }`}
+              >
+                {characterCount}/1000
+                {error && <span className="ml-2">{error.message}</span>}
+              </p>
             </div>
-          </form>
-        </>
+          </Form>
+        </Card>
       ) : (
         <p>
           You need to be logged in to share your thoughts. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
-    </div>
+    </>
   );
 };
 

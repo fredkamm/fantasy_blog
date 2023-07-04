@@ -53,10 +53,10 @@ const SingleThought = () => {
       </div>
 
       <div>
-        <CommentList comments={thought.comments} />
+        <CommentForm thoughtId={thought._id} />
       </div>
       <div>
-        <CommentForm thoughtId={thought._id} />
+        <CommentList comments={thought.comments} />
       </div>
     </div>
   );

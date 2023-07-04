@@ -17,18 +17,18 @@ const CommentList = ({ comments = [] }) => {
       <Row className="">
         {comments &&
           comments.map((comment) => (
-            <Card bg="dark" text="light" className="commentList">
-              <Link
-                to={`/profiles/${comment.commentAuthor}`}
-                className="comment-card-link"
-              >
-                <Card.Header>@{comment.commentAuthor}</Card.Header>
-              </Link>
+            <Card className="commentList" bg="dark" text="light" border="light" >
+              <Card.Header>{comment.createdAt}</Card.Header>
               <Card.Body>
                 <blockquote className="blockquote-body mb-0">
                   <p> {comment.commentText} </p>
                   <footer className="blockquote-footer">
-                    {comment.createdAt}
+                    <Link
+                      to={`/profiles/${comment.commentAuthor}`}
+                      className="comment-card-link"
+                    >
+                      @{comment.commentAuthor}
+                    </Link>
                   </footer>
                 </blockquote>
               </Card.Body>

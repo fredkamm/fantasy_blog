@@ -113,7 +113,7 @@
   margin: 15rem 0 15rem 0;
 }
 
-/* START OF THE THOUGHT LIST FOR THE COMMENT LIST */
+/* START OF THE COMMENT LIST */
 
 .comment-container{
   display: flex;
@@ -123,8 +123,8 @@
 }
 
 .commentList {
-  box-shadow: 0px 2px 2px 2px #fff;
-  border-radius: 10px;
+  /* box-shadow: 0px 2px 2px 2px #fff; */
+  /* border-radius: 10px; */
   margin: 1rem 0 1rem 0;
 }
 
@@ -138,6 +138,18 @@
   color: inherit;
   font-size: 16px;
   text-decoration: underline;
+}
+
+/* START FOR THE COMMENT FORM */
+
+.comment-form-footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.comment-form-input {
+  margin: .5rem 1rem;
 }
 
 
