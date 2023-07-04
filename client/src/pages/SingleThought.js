@@ -52,13 +52,10 @@ const SingleThought = () => {
         </div>
       </div>
 
-      <div
-        className="my-5"
-        style={{ boxShadow: "0px 2px 2px 2px #ffff", borderRadius: "10px" }}
-      >
+      <div>
         <CommentList comments={thought.comments} />
       </div>
-      <div className="m-3 p-4" style={{ border: "1px dotted #1a1a1a" }}>
+      <div>
         <CommentForm thoughtId={thought._id} />
       </div>
     </div>

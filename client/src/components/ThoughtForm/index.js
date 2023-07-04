@@ -105,7 +105,7 @@ const ThoughtForm = () => {
                 className="mb-3"
               >
                 <Form.Control
-                  as="textarea"
+                  type="text"
                   name="thoughtTitle"
                   placeholder="Tile"
                   value={thoughtTitle}

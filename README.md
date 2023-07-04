@@ -31,7 +31,7 @@ I value reader feedback and encourage interaction by providing a commenting syst
 </div>
 <br>
 <div>
-    <img src="./client/assets/images/screenshot.png" alt="Screenshot"  width="500" height="300"/>
+    <img src="./client/assets/images/screenshot.png" alt="Screenshot"  width="700" height="400"/>
 </div>
 
 # Tools Used

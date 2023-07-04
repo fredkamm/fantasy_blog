@@ -113,6 +113,34 @@
   margin: 15rem 0 15rem 0;
 }
 
+/* START OF THE THOUGHT LIST FOR THE COMMENT LIST */
+
+.comment-container{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0 2rem 0;
+  align-items: flex-start;
+}
+
+.commentList {
+  box-shadow: 0px 2px 2px 2px #fff;
+  border-radius: 10px;
+  margin: 1rem 0 1rem 0;
+}
+
+.comment-card-link {
+  color: inherit;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: flex-start;
+}
+.comment-card-link:hover {
+  color: inherit;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+
 h1,
 h2,
 h3,
