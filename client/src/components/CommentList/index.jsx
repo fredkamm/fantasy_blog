@@ -1,33 +1,40 @@
+import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+
 const CommentList = ({ comments = [] }) => {
   if (!comments.length) {
-    return <h3>No Comments Yet</h3>;
+    return <h3 className="text-light text-center">No Comments Yet</h3>;
   }
 
   return (
-    <>
-      <h3
-        className="p-5 display-inline-block"
-        style={{ borderBottom: "1px solid #1a1a1a" }}
-      >
-        Comments
-      </h3>
-      <div className="flex-row my-4">
+    <Container className="comment-container">
+      <Row>
+        <h3 className="text-light">Comments:({comments.length})</h3>
+      </Row>
+      <Row className="">
         {comments &&
           comments.map((comment) => (
-            <div key={comment._id} className="col-12 mb-3 pb-3">
-              <div className="p-3 bg-dark text-light">
-                <h5 className="card-header">
-                  {comment.commentAuthor} commented{" "}
-                  <span style={{ fontSize: "0.825rem" }}>
-                    on {comment.createdAt}
-                  </span>
-                </h5>
-                <p className="card-body">{comment.commentText}</p>
-              </div>
-            </div>
+            <Card className="commentList" bg="light" text="dark" border="light">
+              <Card.Header>{comment.createdAt}</Card.Header>
+              <Card.Body>
+                <blockquote className="blockquote-body mb-0">
+                  <p> {comment.commentText} </p>
+                  <footer className="blockquote-footer">
+                    <Link
+                      to={`/profiles/${comment.commentAuthor}`}
+                      className="comment-card-link"
+                    >
+                      @{comment.commentAuthor}
+                    </Link>
+                  </footer>
+                </blockquote>
+              </Card.Body>
+            </Card>
           ))}
-      </div>
-    </>
+      </Row>
+    </Container>
   );
 };
 

@@ -1,6 +1,9 @@
-// Import the `useParams()` hook
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
 
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
@@ -22,31 +25,33 @@ const SingleThought = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="my-3">
-      <h3 className="card-header bg-dark text-light p-2 m-0">
-        {thought.thoughtAuthor} <br />
-        <p>{thought.createdAt}</p>
-      </h3>
-      <div className="bg-light py-4">
-        <blockquote
-          className="p-4"
-          style={{
-            fontSize: "1.5rem",
-            fontStyle: "italic",
-            lineHeight: "1.5",
-          }}
-        >
-          {thought.thoughtText}
-        </blockquote>
-      </div>
+    <Container className="single-thought-container">
+      <Card
+        className="single-thought-card my-2"
+        bg="light"
+        text="dark"
+        border="dark"
+      >
+        <Card.Header className="card-header single-thought-header">
+          <h3>{thought.thoughtTitle}</h3>
+          <Link
+            to={`/profiles/${thought.thoughtAuthor}`}
+            className="single-thought-link"
+          >
+            <p>@{thought.thoughtAuthor}</p>
+          </Link>
+        </Card.Header>
+        <Card.Body className="single-thought-body">
+          <Card.Text>{thought.thoughtText}</Card.Text>
+        </Card.Body>
+        <Card.Footer className="single-thought-footer">
+          {thought.createdAt}
+        </Card.Footer>
+      </Card>
 
-      <div className="my-5">
-        <CommentList comments={thought.comments} />
-      </div>
-      <div className="m-3 p-4" style={{ border: "1px solid #1a1a1a" }}>
-        <CommentForm thoughtId={thought._id} />
-      </div>
-    </div>
+      <CommentForm thoughtId={thought._id} />
+      <CommentList comments={thought.comments} />
+    </Container>
   );
 };
 
