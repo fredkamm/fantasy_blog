@@ -37,30 +37,24 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {userParam ? `${user.username}'s` : "your"} profile.
-        </h2>
+    <>
+      <h2 className="text-light p-3 mb-5">
+        Viewing @{user.username}'s profile.
+      </h2>
 
-        {!userParam && (
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: "1px solid #1a1a1a" }}
-          >
-            <ThoughtForm />
-          </div>
-        )}
-        <div className="col-12 col-md-10 mb-5">
-          <ThoughtList
-            thoughts={user.thoughts}
-            title={`${user.username}'s thoughts...`}
-            showTitle={false}
-            showUsername={false}
-          />
+      {!userParam && (
+        <div className="thoughtForm-profile">
+          <ThoughtForm />
         </div>
+      )}
+      <div className="thoughts-profile">
+        <ThoughtList
+          thoughts={user.thoughts}
+          title={`${user.username}'s Post History`}
+          showTitle={false}
+        />
       </div>
-    </div>
+    </>
   );
 };
 

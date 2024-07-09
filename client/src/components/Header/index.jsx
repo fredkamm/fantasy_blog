@@ -1,43 +1,68 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+
+import { QUERY_USER, QUERY_ME } from "../../utils/queries";
 import Auth from "../../utils/auth";
 
 const Header = () => {
+  const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam },
+  });
+
+  const user = data?.me || data?.user || {};
+  // navigate to personal profile page if username is yours
+  // if (Auth.getProfile().authenticatedPerson.username === userParam) {
+  //   return <Link to="/me" />;
+  // }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Fantasy Football Blog</h1>
-          </Link>
-        </div>
-        <div>
+    <Navbar collapseOnSelect expand="md" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="/">Fantasy Football Blog</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+        <Navbar.Collapse id="responsive-navbar-nav">
           {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {Auth.getProfile().authenticatedPerson.username}'s profile
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+            <Nav className="me-auto">
+              <Nav.Link href="/me">Profile</Nav.Link>
+              <Nav.Link href="#pricing" onClick={logout}>
                 Logout
-              </button>
-            </>
+              </Nav.Link>
+            </Nav>
           ) : (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
+            <Nav className="me-auto">
+              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+            </Nav>
           )}
-        </div>
-      </div>
-    </header>
+
+          <Navbar.Collapse className="justify-content-end">
+            {Auth.loggedIn() ? (
+              <Navbar.Text>
+                Signed in as: <a href="/me">{user.username}</a>
+              </Navbar.Text>
+            ) : (
+              <Navbar.Text />
+            )}
+          </Navbar.Collapse>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

@@ -1,13 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
 
-import Auth from '../utils/auth';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Alert from "react-bootstrap/Alert";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+
+import Auth from "../utils/auth";
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [show, setShow] = useState(true);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -35,25 +42,34 @@ const Login = (props) => {
 
     // clear form values
     setFormState({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
+    <Card
+      className="login-form-card my-4"
+      bg="dark"
+      text="light"
+      border="light"
+    >
+      <div className="card">
+        <h4 className="card-header bg-dark text-light p-2">Login</h4>
+        <div className="card-body">
+          {data ? (
+            <p>
+              Success! You may now head{" "}
+              <Link to="/">back to the homepage.</Link>
+            </p>
+          ) : (
+            <Form onSubmit={handleFormSubmit}>
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Email Address"
+                className="mb-3"
+              >
+                <Form.Control
                   className="form-input"
                   placeholder="Your email"
                   name="email"
@@ -61,7 +77,14 @@ const Login = (props) => {
                   value={formState.email}
                   onChange={handleChange}
                 />
-                <input
+              </FloatingLabel>
+
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Password"
+                className="mb-3"
+              >
+                <Form.Control
                   className="form-input"
                   placeholder="******"
                   name="password"
@@ -69,25 +92,30 @@ const Login = (props) => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+              </FloatingLabel>
+              <Button className="login-button" variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          )}
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+          {error && (
+            <Alert
+              className="my-3 p-3"
+              variant="danger"
+              onClose={() => setShow(false)}
+              dismissible
+            >
+              <Alert.Heading>ERROR!</Alert.Heading>
+              <p>
                 {error.message}
-              </div>
-            )}
-          </div>
+                {show}
+              </p>
+            </Alert>
+          )}
         </div>
       </div>
-    </main>
+    </Card>
   );
 };
 
