@@ -25,13 +25,13 @@ I value reader feedback and encourage interaction by providing a commenting syst
 # Usage
 
 <div>
-    <a href="https://rocky-hollows-39228.herokuapp.com/">
+    <a href="https://fantasy-blog.onrender.com/">
         Visit my site here!
     </a>
 </div>
 <br>
 <div>
-    <img src="./client/assets/images/screenshot.png" alt="Screenshot"  width="700" height="400"/>
+    <img src="./client/src/assets/screenshot.png" alt="Screenshot"  width="700" height="400"/>
 </div>
 
 # Tools Used
@@ -40,10 +40,10 @@ I value reader feedback and encourage interaction by providing a commenting syst
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 - ![MongoDB](https://img.shields.io/badge/MongoDB-092c56?style=for-the-badge&logo=MongoDB&logoColor=6DA55F)
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+- ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 - ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 - ![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)
-- ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white) --Hosting deployment
+- ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white) --Hosting deployment
 
 # Questions
 
