@@ -8,6 +8,7 @@ export const QUERY_USER = gql`
       email
       thoughts {
         _id
+        thoughtAuthor
         thoughtTitle
         thoughtText
         createdAt

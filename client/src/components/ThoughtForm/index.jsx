@@ -145,7 +145,7 @@ const ThoughtForm = () => {
         </>
       ) : (
         <div className="thoughtForm-login">
-          <p>You need to be logged in to participate in these discussions. </p>
+          <p>You must have an account to participate in discussions </p>
           <p>
             <Link to="/login">Login</Link> or <Link to="/signup">Signup.</Link>
           </p>
